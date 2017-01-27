@@ -3,14 +3,20 @@
 //Interface for the sum function
 
 /**
-* Typing two numbers in order to get the sum
-* @properties a and b numbers
-* @return alert function with a sum of a and b
+* Check if a parameter is a number
+* @property {Number} number
+* @return {Boolean} 
 */ 
 
 function isNumeric(number) {
   return !isNaN(parseFloat(number)) && isFinite(number);
 }
+
+
+/**
+* Typing two numbers in order to get the sum
+* @return {String} sum of numbers
+*/ 
 
 function sumInterface() {
   let a = prompt("Type any number", "0");
