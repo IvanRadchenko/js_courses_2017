@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- Connecting Mocha for result displaying -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+  <!-- Connecting the Mocha Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+  <!-- BDD testing setup -->
+  <script>
+    mocha.setup('bdd');
+  </script>
+
+  <!-- Connecting to Chai -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+  <!-- Applying assert in our global scope -->
+  <script>
+    var assert = chai.assert;
+  </script>
+</head>
+
+<body>
+
+  <script>
+
+//getDecimal function
+
+/**
+* Check if a parameter is a number
+* @property {Number} number
+* @return {Boolean} 
+*/ 
+
+function isNumeric(number) {
+  return !isNaN(parseFloat(number)) && isFinite(number);
+}
+
+/**
+* Get decimal of a number
+* @property 'number'
+* @return {number} 
+*/ 
+function getDecimal(number) {
+  return Math.abs(number) - parseInt(number);
+}
+
+alert( getDecimal(12.345) ); // 0.345
+alert( getDecimal(1.2) ); // 0.2
+alert( getDecimal(-1.2) ); // 0.2
+
+  </script>
+
+  <!-- Our testing specification -->
+  <script src="test.js"></script>
+
+  <!-- Results of the tests falls here -->
+  <div id="mocha"></div>
+
+  <!-- Start testing -->
+  <script>
+    mocha.run();
+  </script>
+</body>
+
+</html>
