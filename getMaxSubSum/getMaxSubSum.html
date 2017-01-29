@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- Connecting Mocha for result displaying -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+  <!-- Connecting the Mocha Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+  <!-- BDD testing setup -->
+  <script>
+    mocha.setup('bdd');
+  </script>
+
+  <!-- Connecting to Chai -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+  <!-- Applying assert in our global scope -->
+  <script>
+    var assert = chai.assert;
+  </script>
+</head>
+
+<body>
+
+  <script>
+//Fast example 
+
+function getMaxSubSum(arr) {
+  let maxSum = 0,
+      partialSum = 0;
+
+  for (let i = 0; i < arr.lenght; i++) {
+    partialSum += arr[i];
+    maxSum = Math.max(maxSum, partialSum);
+    if (partialSum < 0) partialSum = 0;
+  }
+
+  return maxSum;
+}
+
+console.log( getMaxSubSum([-1, 2, 3, -9]) ); // 5
+console.log( getMaxSubSum([-1, 2, 3, -9, 11]) ); // 11
+console.log( getMaxSubSum([-2, -1, 1, 2]) ); // 3
+console.log( getMaxSubSum([100, -9, 2, -3, 5]) ); // 100
+console.log( getMaxSubSum([1, 2, 3]) ); // 6
+console.log( getMaxSubSum([-1, -2, -3]) ); // 0
+  </script>
+
+  <!-- Our testing specification -->
+  <script src="test.js"></script>
+
+  <!-- Results of the tests falls here -->
+  <div id="mocha"></div>
+
+  <!-- Start testing -->
+  <script>
+    mocha.run();
+  </script>
+</body>
+
+</html>
