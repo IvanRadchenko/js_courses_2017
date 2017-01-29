@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- Connecting Mocha for result displaying -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+  <!-- Connecting the Mocha Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+  <!-- BDD testing setup -->
+  <script>
+    mocha.setup('bdd');
+  </script>
+
+  <!-- Connecting to Chai -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+  <!-- Applying assert in our global scope -->
+  <script>
+    var assert = chai.assert;
+  </script>
+</head>
+
+<body>
+
+  <script>
+
+'use strict';
+/**
+* Check if a parameter is a number
+* @param {Number} number
+* @return {Boolean} 
+*/ 
+
+function isNumeric(number) {
+  return !isNaN(parseFloat(number)) && isFinite(number);
+}
+
+/**
+* Filter the array according to
+* the params in range
+* @param {Array} actual
+* @param (Number) range min
+* @param {Number} range max
+* @return {Array} filtered 
+*/ 
+function filterRange(array, a, b) {
+  let newArray = [];
+
+  if (!Array.isArray(array) || !isNumeric(a) || !isNumeric(b)) {
+    return "Wrong Parameters";
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    if (a <= array[i] && array[i] <= b) {
+      newArray.push(array[i]);
+    }
+  }
+
+  return newArray;
+}
+
+let arr = [5, 4, 3, 8, 0];
+let filtered = filterRange(arr, 3, 5);
+
+  </script>
+
+  <!-- Our testing specification -->
+  <script src="test.js"></script>
+
+  <!-- Results of the tests falls here -->
+  <div id="mocha"></div>
+
+  <!-- Start testing -->
+  <script>
+    mocha.run();
+  </script>
+</body>
+
+</html>
