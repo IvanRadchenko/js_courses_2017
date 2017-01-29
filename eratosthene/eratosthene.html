@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- Connecting Mocha for result displaying -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
+  <!-- Connecting the Mocha Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
+  <!-- BDD testing setup -->
+  <script>
+    mocha.setup('bdd');
+  </script>
+
+  <!-- Connecting to Chai -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
+  <!-- Applying assert in our global scope -->
+  <script>
+    var assert = chai.assert;
+  </script>
+</head>
+
+<body>
+
+  <script>
+'use strict';
+/**
+* Solve eratosthene task
+* @param {Array} array
+* @param {Number} predefined simple number
+* @return {Number} sum of simple numbers
+*/ 
+
+//Step 1
+let arr = [];
+
+for (let i = 2; i <= 100; i++) {
+  arr[i] = true;
+}
+
+
+//Step 2
+let p = 2;
+
+do {
+  //Step 3
+  for (let i = 2 * p; i < 100; i += p) {
+    arr[i] = false;
+  }
+
+  //Step 4
+
+  let ind = p + 1;
+  
+  for (ind ; ind < 100; ind++) {
+    if (arr[ind]) break;
+  }
+
+  p = ind;
+} while (p * p < 100); // Step 5
+
+//Step 6
+let  sum = 0;
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i]) {
+    sum += i;
+  }
+}
+
+alert( sum );
+
+  </script>
+
+  <!-- Our testing specification -->
+  <!-- <script src="test.js"></script> -->
+
+  <!-- Results of the tests falls here -->
+  <div id="mocha"></div>
+
+  <!-- Start testing -->
+  <script>
+    mocha.run();
+  </script>
+</body>
+
+</html>
